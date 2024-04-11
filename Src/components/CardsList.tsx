@@ -1,5 +1,5 @@
-import { requireNativeModule } from "expo";
-import { Text, View, Image } from "react-native";
+import {View, Image } from "react-native";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 const cards = [
     require('../../assets/cards/Card 1.png'),
@@ -14,7 +14,19 @@ const cards = [
 ]
 
 const CardsList = () => {
+    const pan = Gesture.Pan().onStart(() => {
+        console.log('Panning started');
+    })
+    .onChange((event) => { 
+        console.log('Panning. Scrolled on Y:', event.changeY);
+    })
+    .onEnd(() => {
+       console.log('Panning end'); 
+    });
+
+
     return (
+        <GestureDetector gesture={pan}>
     <View style={{ padding: 10 }}>
         {cards.map((card, index) => (
         <Image 
@@ -26,9 +38,10 @@ const CardsList = () => {
             aspectRatio: 7 /4,
             marginVertical: 5,
         }} 
-    />
+     />
 ))}
     </View>
+    </GestureDetector>
     );
 };
 
