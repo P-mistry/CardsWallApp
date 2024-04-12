@@ -6,14 +6,13 @@ import CardsList from './Src/components/CardsList';
 
 export default function App() {
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-    <SafeAreaView style={styles.container}>
-      <CardsList />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
+        <CardsList />
 
-      <StatusBar style="light" />
-    </SafeAreaView>
+        <StatusBar style="light" />
+      </SafeAreaView>
     </GestureHandlerRootView>
-
   );
 }
 
